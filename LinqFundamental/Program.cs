@@ -10,17 +10,19 @@ namespace LinqFundamental
     {
         static void Main(string[] args)
         {
-            IEnumerable<Student> students = Student.GetAllStudents().Where(s => s.Gender == "Gender")
-                                          .Where(student => student.Gender == "Male");
-            Console.WriteLine(students);
+            int[] numbers = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
-            /// <summary>
-            ///  Ling query using Sql like query expesions
-            /// </summary>
-            IEnumerable<Student> students1 = from student in Student.GetAllStudents()
-                                             where student.Gender == "Male"
-                                             select student;
-            Console.WriteLine(students1);
+            int smallNumber = numbers.Min();
+            int smallestEvenNumber = numbers.Where(number => number % 2 == 0).Min();
+
+            int largestNumber = numbers.Max();
+            int largestEvenNumber = numbers.Where(number => number % 2 == 0).Min();
+
+            int sumOfAllNumber = numbers.Sum();
+            int sumOfAllEvenNumber = numbers.Where(number => number % 2 == 0).Min();
+
+            int countOfAllNumber = numbers.Count();
+            int countOfAllEvenNumber = numbers.Where(number => number % 2 == 0).Min();
         }
     }
 }
