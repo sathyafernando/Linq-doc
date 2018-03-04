@@ -4,3 +4,6 @@ c:\users\sathya\documents\visual studio 2015\Projects\LinqFundamental\LinqFundam
 c:\users\sathya\documents\visual studio 2015\Projects\LinqFundamental\LinqFundamental\obj\Debug\LinqFundamental.csprojResolveAssemblyReference.cache
 c:\users\sathya\documents\visual studio 2015\Projects\LinqFundamental\LinqFundamental\obj\Debug\LinqFundamental.exe
 c:\users\sathya\documents\visual studio 2015\Projects\LinqFundamental\LinqFundamental\obj\Debug\LinqFundamental.pdb
+E:\linqdoc\Linq-doc\LinqFundamental\bin\Debug\LinqFundamental.exe.config
+E:\linqdoc\Linq-doc\LinqFundamental\obj\Debug\LinqFundamental.exe
+E:\linqdoc\Linq-doc\LinqFundamental\obj\Debug\LinqFundamental.pdb
