@@ -1,0 +1,24 @@
+var employeeGroups = Employee.GetAllEmployees()
+                                        .GroupBy(x => new { x.Department, x.Gender })
+                                        .OrderBy(g => g.Key.Department).ThenBy(g => g.Key.Gender)
+                                        .Select(g => new
+                                        {
+                                            Dept = g.Key.Department,
+                                            Gender = g.Key.Gender,
+                                            Employees = g.OrderBy(x => x.Name)
+                                        });
+
+foreach(var group in employeeGroups)
+{
+    Console.WriteLine("{0} department {1} employees count = {2}",
+        group.Dept, group.Gender, group.Employees.Count());
+    Console.WriteLine("--------------------------------------------");
+    foreach (var employee in group.Employees)
+    {
+        Console.WriteLine(employee.Name + "\t" + employee.Gender
+            + "\t" + employee.Department);
+    }
+    Console.WriteLine(); Console.WriteLine();
+}
+
+*************out put****************************
