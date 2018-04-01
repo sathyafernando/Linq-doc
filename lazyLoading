@@ -1,0 +1,14 @@
+//First create a list of an integer type.
+
+List<int> number = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+//Now, write a LINQ query to get an even number from the list.
+var result = number.Where(x => x % 2 == 0);
+
+//Now, add one or more element to the list.
+number.Add(20);
+
+//Now, we are traversing result, using foreach loop.
+foreach (int item in result)
+{
+Console.WriteLine(item); ❔output = > 2,4,6,8,20
+}
