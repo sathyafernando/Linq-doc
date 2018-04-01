@@ -1,0 +1,10 @@
+
+
+string[] countries = { "Australia", "Canada", "Germany", "US", "India", "UK", "Italy" };
+
+IEnumerable<string> result = countries.TakeWhile(s => s.Length > 2);
+
+foreach (string country in result)
+{
+    Console.WriteLine(country); out put => Australia ,Canada ,Germany
+}
