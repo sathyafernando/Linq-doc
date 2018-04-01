@@ -1,0 +1,10 @@
+// the comparison is case-sensitive, 
+
+string[] countries = { "USA", "usa", "INDIA", "UK", "UK" };
+
+var result = countries.Distinct();
+
+foreach (var v in result)
+{
+    Console.WriteLine(v); //Out  put = > USA,usa,INDIA,UK
+}
