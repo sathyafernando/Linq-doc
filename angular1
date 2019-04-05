@@ -1,0 +1,66 @@
+import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Validators } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
+import { OrderDetail, OrderDetailMain } from '../../models/OrderDetails';
+import { OrderServiceService } from '../../services/OrderService.service';
+import { ToastrService } from 'ngx-toastr';
+
+@Component({
+  selector: 'app-order-create',
+  templateUrl: './order-create.component.html',
+  styleUrls: ['./order-create.component.css']
+})
+export class OrderCreateComponent implements OnInit {
+
+  formSubmitAttempt = false;
+  inputForm: FormGroup;
+  OrderId: number;
+  searchform: FormGroup;
+  orderDetails = new OrderDetail();
+  OrderDetailMain = new OrderDetailMain();
+  tempOrderDetails = [];
+
+  constructor(private fb: FormBuilder, private router: Router, private orederService: OrderServiceService, private toastr: ToastrService) { }
+
+  ngOnInit() {
+    this.getForm();
+  }
+
+  getForm() {
+    return this.inputForm = this.fb.group({
+      Description: ['', Validators.required],
+      Quantity: ['', Validators.required],
+      UnitPrice: ['', Validators.required],
+      ShippingHanding: [''],
+      Misc: [''],
+      Labor: [''],
+      Tax: ['']
+    })
+  }
+
+  addItem() {
+    debugger;
+    if (this.inputForm.invalid) {
+      return;
+    }
+    this.formSubmitAttempt = true;
+    this.orderDetails = Object.assign({}, this.orderDetails, this.inputForm.value);
+    if (this.orderDetails != null) {
+      this.tempOrderDetails.push(this.orderDetails);
+      this.toastr.success('Item Added', '');
+    }
+
+  }
+  saveItem() {
+    debugger;
+    this.OrderDetailMain.ShippingHanding = this.inputForm.get("ShippingHanding").value;
+    this.OrderDetailMain.Misc = this.inputForm.get("Misc").value;
+    this.OrderDetailMain.Labor = this.inputForm.get("Labor").value;
+    this.OrderDetailMain.Tax = this.inputForm.get("Tax").value;
+    this.OrderDetailMain.item = this.tempOrderDetails;
+    this.orederService.createOrder(this.OrderDetailMain);
+    this.toastr.success('Save SuccessFully', '');
+  }
+}
